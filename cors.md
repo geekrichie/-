@@ -1,9 +1,12 @@
-## 项目
+## 简要介绍
 https://github.com/rs/cors  
 看完了cors包的具体实现，  
 里面主要通过设置了一些HTTP的HEADER来达到管理跨域请求的目的，  
 最大的收获在于学会了很多HTTP HEADER的用法  
-项目主要设计到了一下的HTTP的用法，详细可参考https://developer.mozilla.org/zh-CN/docs/Web/HTTP  
+项目主要实现到了一下的HTTP的用法，详细可参考https://developer.mozilla.org/zh-CN/docs/Web/HTTP  
+一般来说POST和CORS都会有Origin首部，  
+但是任何时候都应该设置Vary: Origin  
+避免代理服务器做出错误的相应，此时代理服务器会根据Origin来选择是否使用缓存
 ## 跨域相关的HEADER功能说明
 |  项目名称   | 字段说明  |
 |  ----  | ----  |
@@ -18,3 +21,19 @@ https://github.com/rs/cors
 |  Access-Control-Allow-Headers| 将会在正式请求的 Access-Control-Request-Headers 字段中出现的首部信息。|
 |  Access-Control-Allow-Credentials| 响应头表示是否可以将对请求的响应暴露给前端JS代码|
 |  Access-Control-Expose-Headers| 列出了哪些首部可以作为响应的一部分暴露给外部。正常只提供这些<br>Cache-Control<br>Content-Language<br>Content-Length<br>Content-Type<br>Expires<br>Last-Modified<br>Pragma|
+## 项目
+CORS分为两步，第一步为预检请求，OPTIONS会带上
+Access-Control-Request-Headers  
+Access-Control-Request-Method  
+首部，然后相应返回对应的
+Access-Control-Max-Age  
+Access-Control-Allow-Origin  
+Access-Control-Allow-Methods  
+Access-Control-Allow-Headers  
+Access-Control-Allow-Credentials  
+Access-Control-Expose-Headers  
+正式请求只返回
+Access-Control-Allow-Origin  
+Access-Control-Allow-Credentials  
+Access-Control-Expose-Headers 
+
