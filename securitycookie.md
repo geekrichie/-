@@ -1,4 +1,4 @@
-项目名称：securecookie
+项目名称：securecookie  
 项目地址: https://github.com/gorilla/securecookie
 ### 基本介绍
 项目主要介绍如何对cookie的值进行加密的一个具体实现  
@@ -59,7 +59,7 @@ func encode(value []byte) []byte {
 	return encoded
 }
 ```
-生成MAC值得过程如下：  
+生成MAC值的过程如下：  
 MAC主要用来保证cookie没有被修改过
 ```go
 //这里先调用上面实现的Base64编码下
@@ -114,8 +114,8 @@ func decode(value []byte) ([]byte, error) {
 第三步：匹配MAC值  
 此时cookie值格式是date|value|mac  
 左侧添加key 然后计算新的mac值，然后与原来的mac匹配  
+利用createMac函数,重新生成MAC值
 cookie值中的date可用来判断过期时间
-代码和createMac函数的是实现基本一致  
 第四步：解密操作  
 //先base64 转换成原来的字符，保持和原来完全相反的操作  
 b  = decode(b)  
