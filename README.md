@@ -7,3 +7,4 @@
 | https://github.com/rs/cors   | 跨域包的实现，使用HTTP跨域相关的HEADER实现跨域控制|
 | https://github.com/gorilla/securecookie | 对cookie的value进行加密的一种实现方式|
 | https://github.com/gorilla/csrf | 防御跨站请求伪造的实现|
+| https://github.com/go-session/session | session 保存到内存中的实现方式 |
